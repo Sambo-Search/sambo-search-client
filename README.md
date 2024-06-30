@@ -1,5 +1,7 @@
 # Sambo-Search PHP Client
 
+![Unit Tests](https://github.com/sambo-search/sambo-search-client/actions/workflows/ci.yml/badge.svg)
+
 ## Synopsis
 
 This is a simple PHP client for the Sambo-Search API. It simplifies the usage of the API by providing many
