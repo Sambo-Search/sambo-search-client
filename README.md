@@ -7,7 +7,7 @@ helper functions and easy access to the API suite.
 
 ## Prerequisites
 
-* PHP >= 8.0
+* PHP >= 8.1
 * Composer
 
 ## Install
