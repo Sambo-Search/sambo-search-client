@@ -6,17 +6,17 @@ namespace SamboSearch\Client\DTO;
 
 abstract class DTO
 {
-    protected array $rawData;
+    protected array $data;
 
     public function __construct(array $data)
     {
-        $this->rawData = $data;
+        $this->data = $data;
     }
 
     abstract public static function build(array $data): static;
 
-    public function getRawData(): array
+    public function getData(): array
     {
-        return $this->rawData;
+        return $this->data;
     }
 }

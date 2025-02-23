@@ -6,8 +6,8 @@ namespace SamboSearch\Client\Response\Parser;
 
 use Psr\Http\Message\ResponseInterface;
 
-interface ResponseParser
+interface ParserInterface
 {
     public static function supports(ResponseInterface $response): bool;
-    public function parse(ResponseInterface $rawResponse): mixed;
+    public function parse(ResponseInterface $response): array;
 }

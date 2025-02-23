@@ -9,14 +9,14 @@ use SamboSearch\Client\Exception\Server\UnparsableResponseException;
 
 class ParserFactory
 {
-    public static function getInstance(ResponseInterface $response): ResponseParser
+    public static function getInstance(ResponseInterface $response): ParserInterface
     {
         if (!$response->hasHeader('Content-Type')) {
             throw new UnparsableResponseException('Header: Content-Type not set');
         }
 
-        if (JsonResponseParser::supports($response)) {
-            return new JsonResponseParser();
+        if (JsonParser::supports($response)) {
+            return new JsonParser();
         }
 
         throw new UnparsableResponseException('Can not parse response');

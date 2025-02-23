@@ -8,6 +8,6 @@ class MetaDTO extends DTO
 {
     public static function build(array $data): static
     {
-        // TODO: Implement build() method.
+        return new static($data);
     }
 }

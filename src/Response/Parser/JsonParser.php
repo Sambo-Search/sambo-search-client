@@ -6,16 +6,16 @@ namespace SamboSearch\Client\Response\Parser;
 
 use Psr\Http\Message\ResponseInterface;
 
-class JsonResponseParser implements ResponseParser
+class JsonParser implements ParserInterface
 {
     public static function supports(ResponseInterface $response): bool
     {
         return $response->getHeader('Content-Type')[0] === 'application/json';
     }
 
-    public function parse(ResponseInterface $rawResponse): array
+    public function parse(ResponseInterface $response): array
     {
-        $content = json_decode($rawResponse->getBody()->getContents(), true);
+        $content = json_decode($response->getBody()->getContents(), true);
 
         // TODO: Validation
 

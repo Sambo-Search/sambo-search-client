@@ -6,4 +6,4 @@ namespace SamboSearch\Client\Exception;
 
 use Exception;
 
-abstract class AbstractException extends Exception {}
+abstract class SamboSearchClientException extends Exception {}

@@ -5,32 +5,30 @@ declare(strict_types=1);
 namespace SamboSearch\Client\Response;
 
 use SamboSearch\Client\DTO\ProductDTO;
+use SamboSearch\Client\DTO\ProductsDTO;
+use SamboSearch\Client\Exception\Server\UnparsableResponseException;
 
 class SearchResponse extends AbstractResponse
 {
-    /**
-     * @var ProductDTO[]
-     */
-    private array $products = [];
+    private ProductsDTO $products;
 
-    public function __construct(mixed $parsedResponse)
+    public function __construct(array $data)
     {
-        parent::__construct($parsedResponse);
+        parent::__construct($data);
 
-        foreach ($parsedResponse['results'] as $product) {
-            $this->products[] = ProductDTO::build($product);
+        if (!isset($data['results'])) {
+            throw new UnparsableResponseException('No results found');
         }
+
+        $this->products = ProductsDTO::build($data['results']);
     }
 
-    public static function build(mixed $parsedResponse): static
+    public static function build(array $data): static
     {
-        return new self($parsedResponse);
+        return new self($data);
     }
 
-    /**
-     * @return ProductDTO[]
-     */
-    public function getProducts(): array
+    public function getProducts(): ProductsDTO
     {
         return $this->products;
     }
